@@ -9,7 +9,7 @@ const numbers = [1,2,3,4,5, 6, 7, 8,9, 10];
 const evens = [2,4,6,8,10]
 const days = ["monday", "tuesday", "wenesday", "thursday", "friday", "saturday", "sunday"]
 const months = ["january", "february", "march", "april", "may", "june", "jully", "august", "september", "october", "november", "december"]
-const word = "bijour toi"
+const word = "bijour toi ptit bebou"
 const fruits = ["banana", "apple", "kiwi", "grapes", "pear"]
 const students = [
     {
@@ -41,7 +41,6 @@ const students = [
 //console.log(numberToString(3));
 //console.log(extractKey(students, "firstname"))
 //console.log(upperCaseConsonnes(word));
-//console.log(countVowels(word));
 //printArray(numbers);
 //printFirstOne(days);
 //sumOfElement(evens);
@@ -50,4 +49,5 @@ const students = [
 //console.log(searchElement(days, "test"))
 //printThirdElement(months);
 //printMinAndMaxElement(array)
-console.log(largestSentence(["test", "bijour toi", "skuuuuuuuuu","oue oue oue"]));
+//console.log(largestSentence(["test", "bijour toi", "skuuuuuuuuu","oue oue oue"]));
+console.log(countVowels(word));
