@@ -6,3 +6,8 @@ export const divide = (a, b) => {
 }
 
 export const add = (a, b) => a + b;
+
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/
+export const greatest = (numbers) => Math.max(...numbers);
+export const tiniest = number => Math.min(...number);
