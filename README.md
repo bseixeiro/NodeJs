@@ -59,6 +59,7 @@ il y a 2 syntaxes pour import/export:
 
 callback => fonction passer en parametre de fonction
 
+middleware pour Express => logique entre la requete et la reponse ( c est le callback dans le app.get  )
 
 
 
