@@ -57,6 +57,8 @@ il y a 2 syntaxes pour import/export:
  - CommonJs (dans NodeJs)
  - ES6+ "ECMAScript" (dans navigateurs) => format ESM( ECMAScript Module) version ES au moment ou js est devenue langage de prog (2015)
 
+callback => fonction passer en parametre de fonction
+
 
 
 

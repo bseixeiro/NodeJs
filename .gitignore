@@ -3,6 +3,7 @@
 # To check why a specific file is ignored, run `git check-ignore -v <filepath>`.
 
 # === Rule for dotfiles ===
+node_modules
 # Ignore all dotfiles.
 .*
 # Exclude specific dotfiles that we want to track.
@@ -167,3 +168,4 @@ __pycache__
 
 # === Rules for C++ development ===
 compile_commands.json
+
