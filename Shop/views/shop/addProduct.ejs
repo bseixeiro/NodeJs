@@ -1,0 +1,37 @@
+<%- include('../layout/head.ejs') %>
+    <link rel="stylesheet" href="/css/shop/addProduct.css">
+    <script type="text/javascript" src="/js/shop/addProduct.js"></script>
+</head>
+
+<body>
+    <%- include('../layout/navigation.ejs') %>
+
+    <main>
+        <div class="container">
+            <form method="POST" action="/shop/addProduct">
+                <div class="form-container">
+                    <div class="left-container">
+                        <input id="file" type="file" onchange="test(event)" download/>
+                        <img id="img" />
+                    </div>
+                    <div class="right-container">
+                        <div id="name">
+                            <label for="name"> Nom de l'article :</label>
+                            <input name="name" type="text"/>
+                        </div>
+                        <div id="price">
+                            <label for="price"> Prix :</label>
+                            <span id="euro"><input name="price" type="text"/>€</span> 
+                        </div>
+                        <div id="desc">
+                            <label for="name"> Description :</label>
+                            <input name="name" type="text"/>
+                        </div>
+                        <button type="submit">Add New Product</button>
+                    </div>
+                </div>
+            </form>
+        </div>    
+    </main>
+
+<%- include('../layout/end.ejs') %>
