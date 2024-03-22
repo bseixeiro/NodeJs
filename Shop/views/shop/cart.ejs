@@ -1,8 +1,31 @@
 <%- include('../layout/head.ejs') %>
-    <link rel="stylesheet" href="/css/shop.css">
+    <link rel="stylesheet" href="/css/shop/cart.css">
 </head>
 
 <body>
     <%- include('../layout/navigation.ejs') %>
 
-<%- include('../layout/end.ejs') %>
+    <main>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let product of products) { %>
+                        <tr>
+                            <td><img src="/images/<%= product.image %>" alt=""></td>
+                            <td><%= product.name %></td>
+                            <td><%= product.price %></td>
+                        </tr>
+                    <% } %>                                                                                                                                                                                                                                                                                                                                             
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+<%- include('../layout/end.ejs') %>                                                                                                                     

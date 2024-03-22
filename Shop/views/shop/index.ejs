@@ -21,8 +21,14 @@
                             </div>
                         </div>
                         <div class="foot">
-                            <button class="details">Details</button>
-                            <button class="add-cart">Add to Cart</button>
+                            <form action="/shop/cart" method="POST">
+                                <% if(product.inCart) { %>
+                                    <button class="remove-cart" name="inCart" value="false" type="submit">Remove to Cart</button>
+                                <% } else { %>
+                                    <button class="add-cart" name="inCart" value="true" type="submit">Add to Cart</button>
+                                <% } %>
+                                    <input type="text" name="id" value="<%= product.id %>" hidden>
+                            </form>
                         </div>
                     </article>
                 <% } %>

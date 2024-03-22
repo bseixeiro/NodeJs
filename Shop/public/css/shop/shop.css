@@ -77,4 +77,7 @@
     width: 85%;
 }
     
- 
+ .remove-cart {
+    background-image: linear-gradient(to right, #FF2A1F 0%, #FA8D12  51%, #FF2A1F  100%);
+
+ }

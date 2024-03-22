@@ -13,11 +13,12 @@ app.use(Express.static("public"));
 
 //routing
 app.get("/", (req, res) => {
-    res.render("home")
+    res.redirect("/shop")
 })
 
 app.use("/shop", shopRouteur);
 app.use("/auth", authRouteur);
+app.use("*", (req, res) => res.render("erreur"))
 
 //Lancement du server sur http://localhost:3000
 app.listen(3000, () => {
