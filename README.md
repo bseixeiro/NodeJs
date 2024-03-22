@@ -25,3 +25,5 @@ Ensuite vous pouvez lancer le projet à l'aide de la commande :
 ```sh
 npm start
 ```
+
+un dump de la base de donnée ce trouve dans le projet sous le nom 'node.sql'
