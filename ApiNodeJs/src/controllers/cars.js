@@ -1,55 +1,75 @@
-import cars from "../models/cars.js"
+import { mockCars } from "../data/mock.js";
+import Car from "../models/car.js"; // Import the Car model
 
-export const getAllCars = (req, res) => {
-    res.json(cars);
+export const getCars = (req, res) => {
+  Car.find()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error);
+      // res.status(400).json({ message: error.message });
+    });
 };
 
-export const getCar =  (req, res) => {
-    const id = parseInt(req.params.id, 10   )
-    if (isNaN(id)) res.status(400).json({message: "Invalid Id"}) 
-
-    const car = cars.find(car => id === car.id)
-    if (car)
-        res.json(car)
-    else
-        res.status(404).json({message: "Car not found"})
+export const getCar = (req, res) => {
+  const id = req.params.id;
+  Car.findById(id)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error);
+      // res.status(400).json({ message: error.message });
+    });
 };
 
-export const postCar = (req, res) => {
-    const bodyContent = req.body;
-    const lastId = cars.findLast(car => car.id > -1).id
-    const id = lastId + 1;
-    const newCar = { id, ...bodyContent};
+export const createCar = (request, response) => {
+  const bodyContent = request.body;
 
-    cars.push(newCar);
-    res.status(201).json(newCar)
-}
+  // on cree un nouvelle instance de Car
+  const newCar = new Car(bodyContent);
 
-export const updateCar = (req, res) => {
-    const id = parseInt(req.params.id, 10);
-    if (isNaN(id)) res.status(400).json({message: "Invalid Id"});
+  // on sauvegarde la nouvelle instance de Car
+  newCar
+    .save()
+    .then((result) => {
+      response.status(201).json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error);
+      // response.status(400).json({ message: error.message });
+    });
+  // const id = mockCars.length + 1;
+  // const newCar = { id, ...bodyContent };
+  // mockCars.push(newCar);
+  // response.status(201).json(newCar);
+};
 
-    const bodyContent = req.body;
-    
-    const car = cars.find((car) => car.id === id);
-    if (car) {
-      const updatedCar = { ...car, ...bodyContent };
-      cars[cars.indexOf(car)] = updatedCar;
-      res.json(updatedCar);
-    } else {
-        res.status(404).json({ message: "Car not found" });
-    }
+export const udpateCar = (request, response) => {
+  const id = parseInt(request.params.id, 10);
+  const bodyContent = request.body;
+  const car = mockCars.find((car) => car.id === id);
+  if (car) {
+    const updatedCar = { ...car, ...bodyContent };
+    const index = mockCars.findIndex((car) => car.id === id);
+    mockCars[index] = updatedCar;
+    response.json(updatedCar);
+  } else {
+    response.status(404).json({ message: "Car not found" });
   }
+};
 
-export const deleteCar = (req, res) => {
-    const id = parseInt(req.params.id, 10);
-    if (isNaN(id)) res.status(400).json({message: "Invalid Id"});
-
-    const car = cars.find((car) => car.id === id);
-    if (car) {
-        cars = cars.filter((car) => car.id !== id);
-        response.status(204).end();
-    } else {
-        res.status(404).json({ message: "Car not found" });
-    }
-}
+export const deleteCar = (request, response) => {
+  const id = parseInt(request.params.id, 10);
+  const car = mockCars.find((car) => car.id === id);
+  if (car) {
+    mockCars = mockCars.filter((car) => car.id !== id);
+    response.status(204).end();
+  } else {
+    response.status(404).json({ message: "Car not found" });
+  }
+};

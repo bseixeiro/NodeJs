@@ -1,30 +1,31 @@
-import express from 'express';
-import { deleteCar, getAllCars, getCar, postCar, updateCar } from '../controllers/cars.js';
+import express from "express";
+import {
+  createCar,
+  deleteCar,
+  getCar,
+  getCars,
+  udpateCar,
+} from "../controller/cars.js";
 
 const router = express.Router();
 
-router.get("/", getAllCars)
+// GET http://localhost:3001/cars
+router.get("/", getCars);
 
-router.get("/:id", getCar)
+// GET http://localhost:3001/cars/1
+router.get("/:id", getCar);
 
-router.post("/", postCar)
+// POST http://localhost:3001/cars
+router.post("/", createCar);
 
-router.put("/:id", updateCar)
+// PUT http://localhost:3001/cars/1 creer une route qui
+// permet de modiier une voiture
+router.put("/:id", udpateCar);
 
-router.delete("/:id", deleteCar)
+// DELETE http://localhost:3001/cars/1 creer une route qui
+// permet de supprimer une voiture
+router.delete("/:id", deleteCar);
 
-
-const mockCars = [
-    { id: 1, brand: "Audi", model: "A3" },
-    { id: 2, brand: "Renault", model: "Clio" },
-    { id: 3, brand: "Peugeot", model: "208" },
-    { id: 4, brand: "BMW", model: "Serie 1" },
-    { id: 5, brand: "Mercedes", model: "Classe A" },
-    { id: 6, brand: "Citroen", model: "C3" },
-    { id: 7, brand: "Ford", model: "Fiesta" },
-    { id: 8, brand: "Opel", model: "Corsa" },
-    { id: 9, brand: "Toyota", model: "Yaris" },
-    { id: 10, brand: "Volkswagen", model: "Polo" }
-  ];
-
-  export default router;
+// Ceci est un export default, on peut en avoir
+// qu'un seul par fichier (module)
+export default router;
