@@ -1,22 +1,17 @@
 import express from 'express';
+import { deleteCar, getAllCars, getCar, postCar, updateCar } from '../controllers/cars.js';
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.json(mockCars)
-})
+router.get("/", getAllCars)
 
-router.get("/:carsId", (req, res) => {
-    const carsId = parseInt(req.params.carsId, 10   )
-    console.log(carsId);
-    if (isNaN(carsId)) res.status(400).json({message: "Invalid Id"}) 
+router.get("/:id", getCar)
 
-    const car = mockCars.find(car => carsId === car.id)
-    if (car)
-        res.json(car)
-    else
-        res.status(404).json({message: "Car not found"})
-})
+router.post("/", postCar)
+
+router.put("/:id", updateCar)
+
+router.delete("/:id", deleteCar)
 
 
 const mockCars = [
@@ -29,7 +24,7 @@ const mockCars = [
     { id: 7, brand: "Ford", model: "Fiesta" },
     { id: 8, brand: "Opel", model: "Corsa" },
     { id: 9, brand: "Toyota", model: "Yaris" },
-    { id: 10, brand: "Volkswagen", model: "Polo" },
+    { id: 10, brand: "Volkswagen", model: "Polo" }
   ];
 
   export default router;
